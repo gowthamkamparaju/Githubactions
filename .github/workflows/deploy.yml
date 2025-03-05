@@ -1,0 +1,67 @@
+name: Deploy to AWS
+ 
+on:
+  push:
+    branches:
+      - main  # Triggers on push to the main branch
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+ 
+      # Set up AWS CLI
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'  # Change this to your AWS region
+ 
+      # Upload to S3
+      - name: Upload to S3
+        run: |
+          aws s3 sync ./my-build/ s3://my-github1-bucket/ --delete
+          
+      # Invalidate CloudFront cache
+      - name: Invalidate CloudFront cache
+        name: Deploy to AWS
+ 
+on:
+  push:
+    branches:
+      - main  # Triggers on push to the main branch
+ 
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+ 
+      # Set up AWS CLI
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'  # Change this to your AWS region
+ 
+      # Upload to S3
+      - name: Upload to S3
+        run: |
+          aws s3 sync ./my-build/ s3://my-github1-bucket/ --delete
+          
+      # Invalidate CloudFront cache
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id E3G6480IK0RPB2 --paths "/*"
+ 
+        run: |
+          aws cloudfront create-invalidation --distribution-id E3G6480IK0RPB2 --paths "/*"
