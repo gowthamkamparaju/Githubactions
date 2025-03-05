@@ -3,7 +3,7 @@ name: Upload Website to S3 and Invalidate CloudFront
 on:
   push:
     branches:
-      - main  # Runs when code is pushed to master branch
+      - main  # Runs when code is pushed to main branch
  
 jobs:
   deploy:
