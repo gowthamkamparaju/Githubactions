@@ -26,7 +26,7 @@ jobs:
           AWS_REGION: ap-south-1  # Mumbai Region
           SOURCE_DIR: 'public'  # Change this to your actual folder containing index.html
  
-      # 3. Invalidate CloudFront cache
+      # 3. Invalidate CloudFront caches
       - name: Invalidate CloudFront cache
         run: |
           aws cloudfront create-invalidation --distribution-id E3G6480IK0RPB2  --paths "/*"
