@@ -63,5 +63,8 @@ jobs:
         run: |
           aws cloudfront create-invalidation --distribution-id E3G6480IK0RPB2 --paths "/*"
  
-        run: |
-          aws cloudfront create-invalidation --distribution-id E3G6480IK0RPB2 --paths "/*"
+       
+
+
+
+          
